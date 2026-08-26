@@ -39,7 +39,7 @@ Apply and attach it:
 
 ```bash
 kubectl apply -f cors.yaml
-kubectl annotate ingress echo-policy-bindings -n kong \
+kubectl annotate ingress echo -n kong \
   konghq.com/plugins=echo-cors --overwrite
 ```
 

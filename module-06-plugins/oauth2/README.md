@@ -37,7 +37,7 @@ Apply and attach it:
 
 ```bash
 kubectl apply -f oauth2.yaml
-kubectl annotate ingress echo-policy-bindings -n kong \
+kubectl annotate ingress echo -n kong \
   konghq.com/plugins=echo-oauth2 --overwrite
 ```
 

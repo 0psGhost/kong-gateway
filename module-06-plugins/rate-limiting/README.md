@@ -28,11 +28,11 @@ Apply it and attach it to the existing Ingress:
 
 ```bash
 kubectl apply -f rate-limiting.yaml
-kubectl annotate ingress echo-policy-bindings -n kong \
+kubectl annotate ingress echo -n kong \
   konghq.com/plugins=echo-rate-limit --overwrite
 ```
 
-The annotation means this policy applies to requests that match `echo-policy-bindings`. For a real route, combine its name with other plugin names using commas.
+The annotation means this policy applies to requests that match `echo`. For a real route, combine its name with other plugin names using commas.
 
 ## Test It
 
@@ -58,7 +58,7 @@ Rate limiting is not authentication or authorization. It controls volume; it doe
 
 ```bash
 kubectl describe kongplugin echo-rate-limit -n kong
-kubectl get ingress echo-policy-bindings -n kong -o yaml
+kubectl get ingress echo -n kong -o yaml
 kubectl logs -n kong -l app.kubernetes.io/instance=kong --tail=50
 ```
 

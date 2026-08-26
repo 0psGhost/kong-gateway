@@ -35,7 +35,7 @@ Apply and attach it:
 
 ```bash
 kubectl apply -f zipkin.yaml
-kubectl annotate ingress echo-policy-bindings -n kong \
+kubectl annotate ingress echo -n kong \
   konghq.com/plugins=echo-zipkin --overwrite
 ```
 
@@ -69,7 +69,7 @@ Apply it instead of the Zipkin plugin:
 
 ```bash
 kubectl apply -f opentelemetry.yaml
-kubectl annotate ingress echo-policy-bindings -n kong \
+kubectl annotate ingress echo -n kong \
   konghq.com/plugins=echo-opentelemetry --overwrite
 curl -i "$KONG_PROXY_URL/echo"
 ```

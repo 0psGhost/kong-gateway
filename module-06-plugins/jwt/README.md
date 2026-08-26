@@ -53,7 +53,7 @@ Apply it and attach the plugin:
 
 ```bash
 kubectl apply -f jwt.yaml
-kubectl annotate ingress echo-policy-bindings -n kong \
+kubectl annotate ingress echo -n kong \
   konghq.com/plugins=echo-jwt --overwrite
 ```
 

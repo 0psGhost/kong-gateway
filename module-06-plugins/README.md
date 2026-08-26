@@ -34,12 +34,12 @@ Complete [Module 3](../module-03-install-kong/README.md) and [Module 4](../modul
 - Kong is installed in the `kong` namespace.
 - The `echo` Service exists.
 - The `KONG_PROXY_URL` environment variable points to the Kong proxy.
-- An Ingress named `echo-policy-bindings` exists in namespace `kong`.
+- An Ingress named `echo` exists in namespace `kong`.
 
 Each lesson uses an annotation command that replaces the Ingress's current plugin list. When combining policies, provide all names in one comma-separated annotation, for example:
 
 ```bash
-kubectl annotate ingress echo-policy-bindings -n kong \
+kubectl annotate ingress echo -n kong \
   konghq.com/plugins=echo-cors,echo-rate-limit,echo-file-log --overwrite
 ```
 

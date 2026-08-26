@@ -50,7 +50,7 @@ Apply and attach it after configuring an authentication plugin such as API key o
 ```bash
 kubectl apply -f acl.yaml
 kubectl apply -f trusted-client.yaml
-kubectl annotate ingress echo-policy-bindings -n kong \
+kubectl annotate ingress echo -n kong \
   konghq.com/plugins=echo-key-auth,echo-acl --overwrite
 ```
 
@@ -79,7 +79,7 @@ Apply it:
 
 ```bash
 kubectl apply -f ip-restriction.yaml
-kubectl annotate ingress echo-policy-bindings -n kong \
+kubectl annotate ingress echo -n kong \
   konghq.com/plugins=echo-ip-restriction --overwrite
 curl -i "$KONG_PROXY_URL/echo"
 ```

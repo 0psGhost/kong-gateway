@@ -37,7 +37,7 @@ stringData:
   key: learning-secret-key
 YAML
 
-kubectl annotate ingress echo-policy-bindings -n kong \
+kubectl annotate ingress echo -n kong \
   konghq.com/plugins=echo-cors,echo-rate-limit,echo-file-log,echo-key-auth --overwrite
 curl -i "$KONG_PROXY_URL/echo" # 401
 curl -i -H 'apikey: learning-secret-key' "$KONG_PROXY_URL/echo" # 200
@@ -84,7 +84,7 @@ base64url() { printf %s "$1" | base64 -w0 | tr '+/' '-_' | tr -d '='; }
 unsigned="$(base64url "$header").$(base64url "$payload")"
 signature="$(printf %s "$unsigned" | openssl dgst -sha256 -hmac "$JWT_SECRET" -binary | base64 -w0 | tr '+/' '-_' | tr -d '=')"
 JWT_TOKEN="$unsigned.$signature"
-kubectl annotate ingress echo-policy-bindings -n kong \
+kubectl annotate ingress echo -n kong \
   konghq.com/plugins=echo-cors,echo-rate-limit,echo-file-log,echo-jwt --overwrite
 curl -i -H "Authorization: Bearer $JWT_TOKEN" "$KONG_PROXY_URL/echo"
 ```

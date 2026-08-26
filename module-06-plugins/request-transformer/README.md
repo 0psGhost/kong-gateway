@@ -33,7 +33,7 @@ Apply and attach it:
 
 ```bash
 kubectl apply -f request-transformer.yaml
-kubectl annotate ingress echo-policy-bindings -n kong \
+kubectl annotate ingress echo -n kong \
   konghq.com/plugins=echo-request-transformer --overwrite
 curl -i "$KONG_PROXY_URL/echo" -H 'X-Debug: remove-me'
 ```
